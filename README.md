@@ -63,10 +63,12 @@ pip install beautifulsoup4
 - Here are some screenshots of the website:
 
 - here's how the scraped section looks like 
-![alttext]['ss1.png']
+
+![alttext]('ss1.png')
 
 - i inspected the Html content to read Tags and classes using "Inspect" in chrome browser
-![alttext]['ss2.png']
+
+![alttext]('ss2.png')
 
 
 
