@@ -15,41 +15,42 @@ pip install requests
 pip install beautifulsoup4
 ```
 
-- Here's the code used for scraping the website:
-    import requests
-    from bs4 import BeautifulSoup
+#### Here's the code used for scraping the website:
+        import requests
+        from bs4 import BeautifulSoup
 
-    # URL of the website to scrape
-    url = "https://kartikey-vyas-ds.github.io/"
+        # URL of the website to scrape
+        url = "https://kartikey-vyas-ds.github.io/"
 
-    # Fetch the HTML content of the page
-    response = requests.get(url)
+        # Fetch the HTML content of the page
+        response = requests.get(url)
 
-    # Check if the request was successful
-    if response.status_code == 200:
-        html_content = response.text
-        print("HTML content fetched successfully!")
-    else:
-        print(f"Failed to fetch the page. Status code: {response.status_code}")
+        # Check if the request was successful
+        if response.status_code == 200:
+            html_content = response.text
+            print("HTML content fetched successfully!")
+        else:
+            print(f"Failed to fetch the page. Status code: {response.status_code}")
 
-    # Parse the HTML content using BeautifulSoup
-    soup = BeautifulSoup(html_content, 'html.parser')
+        # Parse the HTML content using BeautifulSoup
+        soup = BeautifulSoup(html_content, 'html.parser')
 
-    projects = []
-    for link in soup.find_all('h3', class_='heading'):
-        a_tag= link.find('a')
-        href = a_tag.get('href')
-        title = a_tag.text.strip()
+        projects = []
+        for link in soup.find_all('h3', class_='heading'):
+            a_tag= link.find('a')
+            href = a_tag.get('href')
+            title = a_tag.text.strip()
 
-        p_tag = link.find_next_sibling('p',class_= 'justified-text')
-        description= p_tag.text if p_tag else ''
-        projects.append({
-            'heading':title,
-            'Links': href,
-            'Description':description
-        })
+            p_tag = link.find_next_sibling('p',class_= 'justified-text')
+            description= p_tag.text if p_tag else ''
+            projects.append({
+                'heading':title,
+                'Links': href,
+                'Description':description
+            })
 
-    projects
+        projects
+
 ### Here are the projects extracted by the script:
 - Target Business Case study using SQL: Analyzed this Ecommerce company's data to understand Sales fluctuations over time and ways to boost sales.
 - Data Analysis on Car features's Impact on prices using Advanced Excel: Operated advanced Excel techniques to analyze a dataset ('Car Features and MSRP') comprising over 11,000 data points. Conducted EDA to identify key factors driving consumer behaviour and profitability trends in the automotive industry.
